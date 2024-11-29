@@ -8,8 +8,8 @@ from uuid import uuid4
 app = Flask(__name__)
 socketio = SocketIO(app)
 # l\Downloads\projeto-frida-web-v3\projeto-frida-web\static\js
-#SCRIPT_PATH = os.path.join(os.environ['USERPROFILE'], 'Downloads', 'projeto-frida-web', 'static', 'js') #WINDOWS
-SCRIPT_PATH = os.path.join(os.environ['HOME'], 'Downloads', 'projeto-frida-web', 'static', 'js') #linux
+SCRIPT_PATH = os.path.join(os.environ['HOME'], 'Downloads', 'projeto-frida-web', 'static', 'js')
+
 
 def executar_comando(comando, sid):
     try:
@@ -263,6 +263,14 @@ def instalar_apk():
         return jsonify({'error': str(e)}), 500
     finally:
         os.remove(caminho_arquivo)
+
+@app.route('/executar_tela_remota', methods=['POST'])
+def executar_tela_remota():
+    #comando = f"scrcpy"
+    os.system("scrcpy &")    #thread.start()
+    return jsonify({'message': 'Comando De Espelhamento em execução'})
+
+
 
 @app.route('/remover_app', methods=['POST'])
 def remover_app():
