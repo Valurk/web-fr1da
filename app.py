@@ -8,7 +8,8 @@ from uuid import uuid4
 app = Flask(__name__)
 socketio = SocketIO(app)
 # l\Downloads\projeto-frida-web-v3\projeto-frida-web\static\js
-SCRIPT_PATH = os.path.join(os.environ['USERPROFILE'], 'Downloads', 'projeto-frida-web', 'static', 'js')
+#SCRIPT_PATH = os.path.join(os.environ['USERPROFILE'], 'Downloads', 'projeto-frida-web', 'static', 'js') #WINDOWS
+SCRIPT_PATH = os.path.join(os.environ['HOME'], 'Downloads', 'projeto-frida-web', 'static', 'js') #linux
 
 def executar_comando(comando, sid):
     try:
@@ -76,7 +77,7 @@ def executar_frida():
         return jsonify({'error': 'Dados insuficientes'}), 400
 
     comandos_scripts = " ".join([f"-l {os.path.join(SCRIPT_PATH, script)}" for script in scripts])
-    comando = f"frida -D {dispositivo} -f {pacote} {comandos_scripts}"
+    comando = f"frida -U -f {pacote} {comandos_scripts}"
     thread = threading.Thread(target=executar_comando, args=(comando, sid))
     thread.start()
     return jsonify({'message': 'Comando Frida em execução'})
@@ -321,7 +322,7 @@ def execute_script():
             script_file.write(script_content)
 
         # Executa o script usando Frida
-        comando = f"frida -D {dispositivo} -f {pacote} -l {script_path}"
+        comando = f"frida -U -f {pacote} -l {script_path}"
         stdout, stderr = executar_comando_sync(comando)
 
         # Remove o arquivo temporário
