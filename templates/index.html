@@ -38,6 +38,7 @@
                     <button onclick="listarDispositivos()">LISTAR DISPOSITIVOS</button>
                 </div>
             </div>
+            
 
                         <!-- Seção de Aplicativos Instalados -->
                         <div class="section">
@@ -54,7 +55,8 @@
                                 <input type="file" id="apk_file" accept=".apk">
                                 <button onclick="instalarAPK()">INSTALAR APK</button>
                                 <button onclick="removerApp()">REMOVER APK</button>
-                                <button onclick="limparPacote()">LIMPAR APK</button>
+                                <button
+                                 onclick="limparPacote()">LIMPAR APK</button>
                             </div>
                         </div>
 
@@ -79,6 +81,7 @@
     <div class="input-group">
         <input type="file" id="custom_script" accept=".js">
         <button onclick="executeSelectedScript()">EXECUTAR SCRIPT</button>
+        <button onclick="iniciarEspelhoTela()">INICIAR ESPELHAMENTO DE TELA REMOTA</button>
     </div>
 </div>
 
@@ -103,7 +106,7 @@
                         <div class="section">
                             <h2>OPÇÕES DE SCRIPTS FRIDA:</h2>
                             <div class="checkbox-group">
-                                <label><input type="checkbox" id="chk_anti_root"> ANTI ROOT</label>
+                                <label><input type="checkbox" id="chk_anti_root"> ANTI ROOTs</label>
                                 <label><input type="checkbox" id="chk_bypass_ssl"> BYPASS SSL</label>
                                 <label><input type="checkbox" id="chk_full_crypto"> AES CRYPTO</label>
                                 <label><input type="checkbox" id="chk_bypass_fingerprint"> BYPASS FINGERPRINT</label>
