@@ -288,6 +288,38 @@ async function instalarAPK() {
     }
 }
 
+//func espelho tela remota
+
+async function iniciarEspelhoTela(){
+    
+   // const dispositivo = document.getElementById("dispositivos_upload").value;
+    //const arquivo = document.getElementById("apk_file").files[0];
+
+    //if (!dispositivo || !arquivo) {
+     //   appendToTerminal("Por favor, selecione um dispositivo e um arquivo APK.");
+      //  return;
+   // }
+
+    const formData = new FormData();
+    //formData.append("dispositivo", dispositivo);
+    //formData.append("arquivo", arquivo);
+
+    try {
+        const response = await fetch("/executar_tela_remota", {
+            method: "POST",
+            body: formData,
+        });
+
+        const result = await response.json();
+        appendToTerminal(JSON.stringify(result));
+    } catch (error) {
+        appendToTerminal(`Erro ao Iniciar Espelhamento de Tela: ${error.message}`);
+    }
+    
+    }
+    
+
+
 // Função para definir proxy
 async function definirProxy() {
     const dispositivo = document.getElementById("dispositivos").value;
