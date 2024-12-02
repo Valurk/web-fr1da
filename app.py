@@ -268,7 +268,7 @@ def instalar_apk():
 def executar_tela_remota():
     #comando = f"scrcpy"
     os.system("scrcpy &")    #thread.start()
-    return jsonify({'message': 'Comando De Espelhamento em execução'})
+    return jsonify({'message': 'Running Screen Mirroring'})
 
 
 
@@ -303,7 +303,7 @@ def limpar_pacote():
         stdout, stderr = executar_comando_sync(comando)
         if stderr:
             return jsonify({'error': stderr}), 500
-        return jsonify({'message': f'Cache do pacote {pacote} limpo com sucesso!'})
+        return jsonify({'message': f'Cleaned data from {pacote} sucess!'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
