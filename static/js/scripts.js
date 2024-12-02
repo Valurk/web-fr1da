@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Eventos WebSocket
     socket.on("connect", () => {
-        appendToTerminal("Conectado ao servidor WebSocket");
+        appendToTerminal("Connected to WebSocket server");
     });
 
     socket.on("output", (data) => {
@@ -73,7 +73,7 @@ function atualizarSelectDispositivos(dispositivos) {
     [selectDispositivos, selectDispositivosUpload].forEach((select) => {
         select.innerHTML = "";
         const defaultOption = document.createElement("option");
-        defaultOption.textContent = "Selecionar dispositivo";
+        defaultOption.textContent = "Select Device";
         defaultOption.value = "";
         select.appendChild(defaultOption);
 
@@ -88,7 +88,7 @@ function atualizarSelectDispositivos(dispositivos) {
     // Adiciona evento para listar pacotes ao selecionar um dispositivo
     selectDispositivos.addEventListener("change", listarPacotes);
 
-    appendToTerminal(`Dispositivos listados: ${dispositivos.join(", ")}`);
+    appendToTerminal(`Listed Devices: ${dispositivos.join(", ")}`);
 }
 
 // Função para listar pacotes
@@ -124,7 +124,7 @@ function atualizarSelectPacotes(pacotes) {
         selectPacotes.appendChild(option);
     });
 
-    appendToTerminal("Pacotes listados com sucesso");
+    appendToTerminal("Packages listed successfully");
 }
 
 // Função para executar scripts Frida
@@ -139,7 +139,7 @@ async function executarFrida() {
     if (document.getElementById("chk_bypass_fingerprint").checked) scripts.push("biometric-bypass.js");
 
     if (!dispositivo || !pacote) {
-        appendToTerminal("Por favor, selecione um dispositivo e um pacote.");
+        appendToTerminal("Please select a device and package..");
         return;
     }
 
@@ -349,7 +349,7 @@ async function removerProxy() {
     const dispositivo = document.getElementById("dispositivos").value;
 
     if (!dispositivo) {
-        appendToTerminal("Por favor, selecione um dispositivo.");
+        appendToTerminal("Please, Choose a Device");
         return;
     }
 
@@ -381,7 +381,7 @@ async function verificarProxy() {
     const dispositivo = document.getElementById("dispositivos").value;
 
     if (!dispositivo) {
-        appendToTerminal("Por favor, selecione um dispositivo.");
+        appendToTerminal("Please, Choose a Device");
         return;
     }
 
@@ -414,7 +414,7 @@ async function verificarProxy() {
 async function captureScreen() {
     const dispositivo = document.getElementById("dispositivos").value;
     if (!dispositivo) {
-        appendToTerminal("Por favor, selecione um dispositivo.");
+        appendToTerminal("Please, Choose a Device");
         return;
     }
 
@@ -437,7 +437,7 @@ async function captureScreen() {
 async function startScreenRecording() {
     const dispositivo = document.getElementById("dispositivos").value;
     if (!dispositivo) {
-        appendToTerminal("Por favor, selecione um dispositivo.");
+        appendToTerminal("Please, Choose a Device");
         return;
     }
 
@@ -462,7 +462,7 @@ async function executeSelectedScript() {
     const pacote = document.getElementById("pacotes").value; // Seleção do pacote
 
     if (!scriptFile) {
-        appendToTerminal("Por favor, selecione um script para executar.");
+        appendToTerminal("Please Choose an script to run.");
         return;
     }
 
